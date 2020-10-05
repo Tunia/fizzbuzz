@@ -24,10 +24,10 @@ int main(int argc, char* argv[]) {
   for(uint64_t i = UINT64_C(1); i <= max; ++i) {
     answer[0] = '\0';
     if(i % UINT64_C(3) == UINT64_C(0)) {
-      strncat(answer, (char*)&a, sizeof(a));
+      strncat(answer, (char*)&a, sizeof a);
     }
     if(i % UINT64_C(5) == UINT64_C(0)) {
-      strncat(answer, (char*)&b, sizeof(b));
+      strncat(answer, (char*)&b, sizeof b);
     }
     if(answer[0] == '\0') {
       printf("%" PRIu64 "\n", i);
