@@ -1,3 +1,3 @@
 # Fizzbuzz
 
-Buzzin yo fizz since 1999
+Yo! Buzzahn ya fahzz sahnce 1999
