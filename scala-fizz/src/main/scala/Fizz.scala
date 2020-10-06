@@ -1,19 +1,24 @@
-object Fizz {
+import cats.effect._
 
-  def fizzBuzz(n: Int): Unit = {
-    for (i <- 1 to n) {
-      if (i % 15 == 0) {
-        println("FizzBuzz")
-      } else if (i % 3 == 0) {
-        println("Fizz")
-      } else if (i % 5 == 0) {
-        println("Buzz")
-      } else {
-        println(i)
-      }
+object Fizz extends IOApp {
+
+  override def run(args: List[String]): IO[ExitCode] =
+    args.map(_.toInt) match {
+      case List(i) =>
+        fs2.Stream
+          .range(1, i + 1)
+          .evalMap(x =>
+            IO {
+              List(5, 3).map(x % _) match {
+                case List(0, 0) => println("FizzBuzz")
+                case List(0, _) => println("Buzz")
+                case List(_, 0) => println("Fizz")
+                case _          => println(x)
+              }
+            }
+          )
+          .compile
+          .drain
+          .as(ExitCode.Success)
     }
-  }
-
-  def main(args: Array[String]): Unit =
-    args.map(Integer.parseInt) match { case Array(num) => fizzBuzz(num) }
 }
