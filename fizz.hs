@@ -2,20 +2,17 @@ module Fizz where
 
 import System.Environment
 
-fizz :: Int -> [String]
-fizz n = take n [stringify x | x <- [1..]]
+buzz :: Int -> [String]
+buzz i = [if r == "" then show x else r | x <- [1 .. i], let r = go preds x]
   where
-    stringify :: Int -> String
-    stringify i
-      | i `mod` 15 == 0 = "FizzBuzz"
-      | i `mod` 3 == 0  = "Fizz"
-      | i `mod` 5 == 0  = "Buzz"
-      | otherwise       = show i
-
+    preds :: [(Int, String)]
+    preds = [(3, "Fizz"), (5, "Buzz"), (15, "FizzBuzz")]
+    go :: [(Int, String)] -> Int -> String
+    go tuples x = foldl (\res (n, str) -> if x `mod` n == 0 then res ++ str else res ++ "") "" tuples
 
 main :: IO ()
 main = do
   args <- getArgs
   case args of
-    [i] -> print $ fizz (read i)
+    [i] -> print $ buzz (read i)
     _   -> fail "NaN"
