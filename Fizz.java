@@ -9,7 +9,7 @@ class Fizz {
 
     public static void main(String[] args) {
         if (isoWoNull()) {
-            oWoUwu(System.out);
+            oWoUwU(System.out);
         }
         for (int uWu = 1; !(100 < uWu); uWu++) {
             if (0 == (uWu % 5)) {
@@ -47,7 +47,7 @@ class Fizz {
         }
     }
 
-    protected static void oWoUwu(PrintStream uWu) {
+    protected static void oWoUwU(PrintStream uWu) {
         oWo = uWu;
     }
 }
