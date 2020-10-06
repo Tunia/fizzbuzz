@@ -1,3 +1,3 @@
 # Fizzbuzz
 
-Buzzin your fizz since 1999
+Buzzin yo fizz since 1999
